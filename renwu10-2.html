@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>10-2</title>
+	<style>
+	*{
+		padding: 0;
+		margin: 0;
+	}
+	body{
+		padding-top: 50px;
+	}
+	.my-shadow{
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	}
+	.form-wrap{
+		width: 600px;
+		margin: 0 auto;
+	}
+	.my-shadow h2{
+		padding: 14px 16px;
+		color: #fff;
+		background-color: #009688;
+	}
+	form{
+		margin: 16px;
+		padding-bottom: 30px;
+	}
+	form label{
+		color: #757575;
+	}
+	input[type="text"]{
+		width: 100%;
+		padding: 6px 0;
+		margin-bottom: 10px;
+		outline: none;
+		border: none;
+		border-bottom: 1px solid #808080;
+
+	}
+	textarea{
+		width: 100%;
+		padding: 6px 0;
+		outline: none;
+		border: none;
+		border-bottom: 1px solid #808080;
+	}
+	.form-group{
+		overflow: hidden;
+	}
+	.check-group{
+		float: left;
+		padding: 0 6px;
+		width: 50%;
+	}
+	.radio-group{
+		float: left;
+		width: 45%;
+	}
+	.group input{
+		margin-right: 8px;
+		margin-bottom: 8px;
+	}
+	input[type="submit"]{
+		padding: 8px 16px;
+		margin-top: 20px;
+		border: none;
+		color: #fff;
+		background-color: #009688;
+	}
+
+	</style>
+</head>
+<body>
+	<div class="my-shadow form-wrap">
+		<h2>信息收集表</h2>
+		<form action="">
+			<label for="">姓名</label>
+			<input type="text">
+			<label for="">QQ</label>
+			<input type="text">
+			<label for="">要说的话</label>
+			<textarea name="" id="" cols="30" rows="4"></textarea>
+			<div class="form-group">
+				<div class="check-group group">
+					<input type="checkbox" name="Milk" checked="checked"><label for="">Milk</label><br>
+					<input type="checkbox" name="Sugar"><label for="">Sugar</label><br>
+					<input type="checkbox" name="Lemon"><label for="">Lemon</label>
+				</div>
+				<div class="radio-group group">
+					<input type="radio" name="sex" value="Male" checked="checked"><label for="">Male</label><br>
+					<input type="radio" name="sex" value="Female"><label for="">Female</label>
+				</div>
+			</div>
+			
+			<input type="submit" value="提交">
+		
+		</form>
+	</div>
+	
+	
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>10-1</title>
+	<style>
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		body{
+			padding-top: 50px;
+		}
+		ul{
+			width: 600px;
+			margin: 0 auto;
+		}
+		li{
+			list-style: none;
+			margin-bottom: 20px;
+			padding:10px 12px 16px;
+			background-color: red;
+			border-radius: 3px;
+			color: #fff;
+			position: relative;
+		}
+		li>p{
+			margin-top: 16px;
+			line-height: 1.5;
+		}
+		li:after{
+			content: "x";
+			font-size: 24px;
+			font-weight: bold;
+			position: absolute;
+			right: 20px;
+			top: 0;
+			cursor: pointer;
+		}
+		li:first-child{
+			background-color: #4caf50;
+		}
+		li:nth-child(2){
+			background-color: #2196f3;
+		}
+		li:nth-child(3){
+			background-color: #f44336;
+		}
+		li:nth-child(4){
+			background-color: #ff9800;
+		}
+
+	</style>
+</head>
+<body>
+	<ul>
+		<li><h2>恭喜你</h2><p>成为本周学霸，继续加油吧</p></li>
+		<li><h2>通知</h2><p>晚上上课，不要忘了</p></li>
+		<li><h2>天啊</h2><p>竟然几天没做任务</p></li>
+		<li><h2>警告</h2><p>学如逆水行舟，不进则退</p></li>
+	</ul>
+</body>
+</html>
