@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			body{
+				padding-top: 200px;
+				padding-bottom: 200px;
+			}
+			#shuangfeiyi{
+				max-width: 1200px;/*设置此项属性后,元素的宽度只能比 1800小,任何时候都不能超过1800*/
+				height: 200px;
+				border: 1px solid;
+				margin: 0 auto;
+			}
+			#shuangfeiyi .main{
+				width: 100%;
+			}
+			#shuangfeiyi .main:after{
+				content: '';
+				display: block;
+				clear: both;
+			}
+			#shuangfeiyi .main-con{
+				margin: 0 200px;
+				background: red;
+				height: 200px;
+			}
+			#shuangfeiyi .main,#shuangfeiyi  .left,#shuangfeiyi  .right{
+				float: left;
+				height: 200px;
+			}
+			#shuangfeiyi .left{
+				width: 200px;
+				background: green;
+				margin-left: -100%;
+			}
+			#shuangfeiyi .right{
+				width: 200px;
+				background: blue;
+				margin-left:-200px;
+			}
+			#shengbei{
+				max-width: 800px;
+				height: 150px;
+				margin: 20px auto;
+				border: 1px solid;
+				padding: 0 200px;
+				/*overflow: hidden;*/
+				position: relative;
+			}
+			#shengbei .main{
+				width: 100%;
+				
+				background-color: red;
+			}
+			#shengbei .main,#shengbei .left,#shengbei .right{
+				float: left;
+				height: 150px;
+			}
+			#shengbei .left{
+				width: 200px;
+				background-color: blue;
+				position: absolute;
+				left: 0;
+			}
+			#shengbei .right{
+				width: 200px;
+				background-color: green;
+				position: absolute;
+				right: 0;
+			}
+		</style><!---100%就是百分百，不以谁的意志转移(父元素)，，，这么简单的东西还高了这么久，直接写一遍就什么都明朗了-->
+	</head>
+	<body>
+		<div id="shuangfeiyi">
+			<div class="main">
+				<div class="main-con">中</div>
+			</div>
+			<div class="left">左</div>
+			<div class="right">右</div>
+		</div>
+		<div id="shengbei">
+			<div class="main">中</div>
+			<div class="left">左</div>
+			<div class="right">右</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>11-4</title>
+	<style>
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		body{
+			padding: 20px 0;
+		}
+		.my-shadow{
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+		}
+		a{
+			text-decoration: none;
+		}
+		header{
+			width: 1200px;
+			margin: 0 auto;
+			margin-bottom: 30px;
+			border-bottom: 1px solid #ccc;
+			text-align: center;
+		}
+		header h1{
+			padding: 10px 0;
+		}
+		.content{
+			width: 1200px;
+			margin: 0 auto;
+		}
+		.content:after{
+			content: "";
+			display: block;
+			clear: both;
+		}
+		li{
+			list-style: none;
+			float: left;
+			margin-right: 30px;
+			margin-bottom: 20px;
+		}
+		li:nth-child(3n){
+			margin-right: 0;
+		}
+		li img{
+			width: 380px;
+			height: 252px;
+			border: none;
+			vertical-align: top;
+		}
+
+
+	</style>
+</head>
+<body>
+<header><h1>风景列表</h1></header>
+<div class="content">
+	<ul>
+		<li class="my-shadow"><a href="#"><img src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2275517462,720218917&fm=23&gp=0.jpg" alt="fengjinghua"></a></li>
+		<li class="my-shadow"><a href="#"><img src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2275517462,720218917&fm=23&gp=0.jpg" alt="fengjinghua"></a></li>
+		<li class="my-shadow"><a href="#"><img src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2275517462,720218917&fm=23&gp=0.jpg" alt="fengjinghua"></a></li>
+		<li class="my-shadow"><a href="#"><img src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2275517462,720218917&fm=23&gp=0.jpg" alt="fengjinghua"></a></li>
+		<li class="my-shadow"><a href="#"><img src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2275517462,720218917&fm=23&gp=0.jpg" alt="fengjinghua"></a></li>
+		<li class="my-shadow"><a href="#"><img src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2275517462,720218917&fm=23&gp=0.jpg" alt="fengjinghua"></a></li>
+	</ul>
+</div>
+	
+</body>
+</html>
