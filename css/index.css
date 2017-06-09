@@ -188,6 +188,7 @@ nav li:hover{
 #protfolio .ceil:before{
 	content: '\e602';
 	font-family: iconfont;
+	font-size: 50px;
 	position: absolute;
 	top: 50%;
 	left: 50%;
