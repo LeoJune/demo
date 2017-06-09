@@ -1,0 +1,379 @@
+/*css reset*/
+*{
+	padding: 0;
+	margin: 0;
+}
+a{
+	text-decoration: none;
+}
+ul,li{
+	list-style: none;
+}
+img{
+	border: none;
+}
+input,textarea{
+	border: none;
+}
+@font-face {
+  font-family: 'iconfont';  /* project id 308801 */
+  src: url('//at.alicdn.com/t/font_4ibf3l39w94quxr.eot');
+  src: url('//at.alicdn.com/t/font_4ibf3l39w94quxr.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_4ibf3l39w94quxr.woff') format('woff'),
+  url('//at.alicdn.com/t/font_4ibf3l39w94quxr.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_4ibf3l39w94quxr.svg#iconfont') format('svg');
+}
+
+/*common css*/
+.clearfix:after{
+	content: '';
+	display: block;
+	clear: both;
+}
+.btn{
+	padding: 20px 25px;
+	border-radius: 3px;
+	background-color: #fed136;
+	font-size: 18px;
+	font-weight: 700;
+	color: #fff;
+	display: inline-block;
+	cursor: pointer;
+}
+.btn:hover{
+	background-color: #fec503;
+}
+.ico-font{
+    font: normal bold 56px/112px iconfont;
+    display:inline-block;
+    width:112px;
+    height:112px;
+    border-radius:50%;
+    background:#fed136;
+    color:#fff;
+    font-family:iconfont;
+    font-style:normal;
+    font-size:50px;
+    font-weight:700;
+    text-align:center;
+}
+.title{
+	margin-bottom: 30px;
+	text-align: center;
+}
+.title h2{
+	font-size: 40px;
+}
+.title p{
+	color: #777;
+	margin: 20px 60px;
+	font-style: italic;
+}
+/*css*/
+body{
+	font: 16px/1.5 arial,verdana;
+}
+/*header nav*/
+nav{
+	width: 100%;
+	padding: 8px 0;
+	background-color: #222222;
+	position: fixed;
+	top: 0;
+	z-index: 999;
+}
+.layout{
+	width: 1170px;
+	margin: 0 auto;
+}
+.logo{
+	float: left;
+	padding: 15px;
+	font-size: 22px;
+	color:  #fed136;
+}
+nav ul{
+	float: right;
+}
+nav li{
+	float: left;
+	padding: 15px;
+	font-size: 18px;
+	color: #fff;
+	cursor: pointer;
+}
+nav li:hover{
+	color: #fed136;
+}
+
+/*banner*/
+#banner{
+	padding: 200px 0;
+	text-align: center;
+	background-image: url(../images/banner-bg.jpg);
+	background-position: center;
+	color: #fff;
+}
+#banner h1{
+	font-size: 40px;
+	font-weight: 500;
+	margin: 20px 0
+}
+#banner p{
+	font-size: 75px;
+	font-weight: 700;
+	margin-bottom: 20px;
+}
+/*services*/
+#services{
+	padding: 60px 0;
+}
+#services li{
+	float: left;
+	width: 360px;
+	margin-right: 45px;
+	padding: 10px 0 20px;
+	text-align: center;
+}
+#services li:last-child{
+	margin-right: 0;
+}
+#services li h4{
+	margin: 10px 0 20px;
+}
+#services li p{
+	color: #777;
+}
+/*protfolio*/
+#protfolio{
+	padding: 60px 0;
+	background-color: #f7f7f7;
+}
+#protfolio li{
+	float: left;
+	width: 360px;
+	margin-right: 45px;
+	margin-bottom: 30px;
+	background-color: #fff;
+	text-align: center;
+}
+#protfolio ul li:nth-child(3n){
+	margin-right: 0;
+}
+#protfolio li a{
+	display: inline-block;
+	position: relative;
+}
+#protfolio li img{
+	width: 100%;
+	height: auto;
+	vertical-align: top;
+}
+#protfolio li h4{
+	font-size: 18px;
+	margin: 10px 0;
+}
+#protfolio li p{
+	margin: 10px 0 20px;
+	font-style: italic;
+}
+#protfolio .ceil{
+	display: none;
+	width: 100%;
+	height: 100%;
+	background: rgba(254,209,54,.9);
+    position: absolute;
+    top: 0;
+}
+#protfolio .ceil:before{
+	content: '\e602';
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	color: #fff;
+}
+#protfolio li a:hover .ceil{
+	display: block;
+}
+/*about*/
+#about{
+	padding: 60px 0;
+}
+.time-line{
+	position: relative;
+}
+.time-line:before{
+	content: '';
+	width: 3px;
+	height: 100%;
+	position: absolute;
+	z-index: -1;
+	left: 50%;
+	transform: translate(-50%,0);
+	background-color: #777;
+}
+.time-line li{
+	height: 180px;
+	margin-bottom: 90px;
+	position: relative;
+}
+.time-line .time-img{
+	width: 170px;
+	height: 170px;
+	border-radius: 50%;
+	border: 7px solid #fbfbfb;
+	position: absolute;
+	left: 50%;
+	margin-left: -85px;
+	overflow: hidden;
+	
+}
+.time-line .time-img img{
+	width: 100%;
+	height: auto;
+}
+.time-line .time-detial{
+	width: 350px;
+	margin: 0 20px 0 100px;
+	float: left;
+	text-align: right;
+}
+.time-line .time-detial p{
+	color: #777;
+	margin-top: 10px;
+}
+.time-line .time-li-inverted .time-detial{
+	float: right;
+	margin: 0 100px 0 20px;
+	text-align: left;
+}
+.time-line .time-more{
+	text-align: center;
+	background-color: #fed130;
+}
+.time-line .time-more p{
+	margin-top: 40px;
+	color: #fff;
+	font-weight: 700;
+	font-size: 20px;
+}
+/*our team*/
+#team{
+	padding: 60px 0;
+	background-color: #f7f7f7;
+	text-align: center;
+}
+#team li{
+	float: left;
+	width: 360px;
+	margin-right: 45px;
+	padding-bottom: 30px;
+}
+#team ul li:last-child{
+	margin-right: 0;
+}
+#team li img{
+	width: 225px;
+	height: auto;
+	border-radius: 50%;
+	border: 7px solid #fff;
+}
+#team li>h4{
+	font-size: 18px;
+}
+#team li>p{
+	color: #777;
+	font-size: 14px;
+}
+.contract a{
+	font: 45px iconfont;
+	color: #000;
+	margin: 0 8px;
+}
+.contract a:hover{
+	color: #f0d136;
+}
+#team .layout p:last-child{
+	width: 700px;
+	margin: 0 auto;
+	font-size: 20px;
+	color: #777;
+}
+/*brand*/
+#brand a{
+	float: left;
+	width: 200px;
+	margin: 60px 46px;
+}
+#brand a img{
+	vertical-align: top;
+}
+/*advice*/
+#advice{
+	padding: 60px 0;
+	background-image: url(../images/map-image.png);
+	background-color: #000;
+}
+#advice h2{
+	color: #fff;
+}
+#advice form{
+	position: relative;
+	padding-bottom: 100px;
+}
+#advice .input-group{
+	float: left;
+	width: 48%;
+}
+#advice .input-group input{
+	box-sizing: border-box;
+	width: 100%;
+	padding: 20px 20px;
+	margin-bottom: 20px;
+	border-radius: 5px;
+}
+#advice .input-group input:last-child{
+	margin-bottom: 0;
+}
+#advice textarea{
+	box-sizing: border-box;
+	float: right;
+	width: 48%;
+	height: 205px;
+	padding: 20px;
+	border-radius: 5px;
+	font-family: arial;
+}
+#advice input[type=submit]{
+	margin-top: 20px;
+	position: absolute;
+	left: 50%;
+	bottom: 10px;
+	transform: translate(-50%,0);
+}
+/*footer*/
+footer{
+	padding: 10px 0;
+}
+footer .copy{
+	float: left;
+	line-height: 60px;
+	margin-right: 250px;
+}
+footer .contract{
+	float: left;
+}
+footer .two-link{
+	float: right;
+	line-height: 60px;
+}
+footer .two-link a{
+	color: #fed136;
+}
+footer .two-link a{
+	margin-right: 20px;
+}
+footer .two-link a:hover{
+	text-decoration: underline;
+}
