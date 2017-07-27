@@ -1,51 +1,73 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+	<meta charset="UTF-8">
+	<title>getmore</title>
+	<style>
+	  *{
+	  	padding: 0;
+	  	margin: 0;
+	  }
+	  li{
+	  	list-style: none;
+	  }
+	  #btn{
+	  	position: absolute;
+	  	left: 50%;
+	  	transform: translateX(-50%);
+	  	padding: 10px 20px;
+	  	border: 1px solid red;
+	  	color: red;
+	  	font-size: 20px;
+	  }
+	  #news-box li{
+		margin: 10px 0;
+		padding: 10px;
+		font-size: 20px;
+		border: 1px solid #000;
+	  }
+	</style>
 </head>
 <body>
-  <div class="query-area">
-    <input type="text" name="username" value="hunger" placeholder="hunger, ruoyu, anyone">
-    <button>查询朋友</button>   
-  </div>
-  <div class="detail-area">
-    <ul>     
-    </ul>
+<div>
+  <ul id="news-box"></ul>
+</div>
+<a value="更多" id="btn" href="javascript:void(0)">更多</a>
+<script>
+  var newsBox = document.querySelector("#news-box")
+  var btn = document.querySelector("#btn")
+  var newsIndex = 0
+  var canIclick = true
 
-  </div>
+  btn.addEventListener("click",function(){
+  	if(!canIclick){
+  		return
+  	}
 
-  <script>
-    var btn = document.querySelector('.query-area button')
-    var input = document.querySelector('.query-area input')
-    
-
-    btn.addEventListener('click', function(){
-       var xhr = new XMLHttpRequest()
-       xhr.onreadystatechange = function(){
-         if(xhr.readyState === 4 && (xhr.status === 200 || xhr.status === 304)){
-          var friends = JSON.parse(xhr.responseText)
-          render(friends)
-         }
-       }
-
-      xhr.open('get', '/getFriends?username=' + input.value, true)
-      xhr.send()
-    })
-
-
-
-
-    function render(friends){
-      var detailCt = document.querySelector('.detail-area ul')
-      detailCt.innerHTML = '';
-      var ct = document.createDocumentFragment()
-      for(var i = 0; i < friends.length; i++){
-        var node = document.createElement('li')
-        node.innerText = friends[i]
-        ct.appendChild(node)
-      }
-      detailCt.appendChild(ct)
-    }
-  </script>
-  
+  	var xhr = new XMLHttpRequest()
+  	xhr.onreadystatechange = function(){
+	  if(xhr.readyState === 4){
+	    if(xhr.status === 200 || xhr.status === 304){
+	    	var results = JSON.parse(xhr.responseText)
+	    	var fragment = document.createDocumentFragment()
+	    	for(var i = 0; i < results.length; i++){
+	    		var node = document.createElement("li")
+	    		node.innerText = results[i]
+	    		fragment.appendChild(node)
+	    	}
+	    	newsBox.appendChild(fragment)
+	    	newsIndex += 5	
+	    }else{
+	    	alert('出错了')
+	    }
+	    canIclick = true
+  	  }
+  	}
+  	xhr.open('get','/getMore?index='+newsIndex+'&length=5',true)
+  	xhr.send()
+  	canIclick = false
+  })
+</script>
+	
 </body>
 </html>
