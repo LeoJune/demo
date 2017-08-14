@@ -29,8 +29,13 @@ app.get('/getNews', function(req, res){
     data.push(news[index]);
     news.splice(index, 1);
   }
-  res.header("Access-Control-Allow-Origin", "http://a.jrg.com:8080"); 
-  //res.header("Access-Control-Allow-Origin", "*"); 
-  res.send(data);
+
+
+  var cb = req.query.callback;
+  if(cb){
+    res.send(cb + '('+ JSON.stringify(data) + ')');
+  }else{
+    res.send(data);
+  }
 })}
  module.exports.setRouter = setRouter
