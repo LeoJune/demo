@@ -68,7 +68,7 @@
 			var scroll = $(window).scrollTop();
 			var wHeight = $(window).height();
 			var tarOffset = $target.offset().top;
-			if(tarOffset < scroll + wHeight -50 && tarOffset >= scroll){
+			if(tarOffset < scroll + wHeight -100 && tarOffset >= scroll){
 				var trueSrc = $target.attr("data-src");
 				$target.attr("src",trueSrc);
 				$target.attr("hasLoad",true);
