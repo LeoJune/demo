@@ -59,7 +59,7 @@ router.get('/getMore', function(req,res){
 	}
 	setTimeout(function(){
 		res.send(data);
-	},3000)
+	},1000)
 	
 })
 
