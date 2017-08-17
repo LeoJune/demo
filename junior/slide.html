@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>轮播</title>
+	<script src="https://cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>
+	<style>
+	  *{
+	  	padding: 0;
+	  	margin: 0;
+	  }
+	  body{
+	  	padding: 10px 0 50px;
+	  }
+	  li{
+	  	list-style: none;
+	  }
+	  .ct{
+	  	position: relative;
+	  	width: 400px;
+	  	height: 600px;
+	  	margin-left: 500px;
+	  	overflow: hidden;
+	  }
+	  .slide{
+	  	position: absolute;
+	  	left: 0;
+	  	width: 2000px;
+	  }
+	  .slide li{
+	  	float: left;
+	  }
+	  .slide li img{
+	  	width: 400px;
+	  	height: 600px;
+	  	border: none;
+	  }
+	  .control{
+	  	position: absolute;
+	  	bottom: 30px;
+	  	left: 50%;
+	  	transform: translateX(-50%);
+	  	overflow: hidden;
+	  }
+	  .control li{
+		float: left;
+		margin-right: 8px;
+		background-color: #fff;
+		width: 30px;
+		height: 10px;
+		border-radius: 5px;
+		cursor: pointer;
+	  }
+	  .control li:last-child{
+	  	margin-right: 0;
+	  }
+	  .control li.active{
+	  	background-color: #666;
+	  }
+	  .pre,.next{
+		position: absolute;
+		top: 50%;
+		z-index: 2;
+		margin-top: -15px;
+		width: 30px;
+		height: 30px;
+		border-radius: 15px;
+		font-size: 20px;
+		text-align: center;
+		color: #fff;
+		cursor: pointer;
+		background-color: #333;
+		opacity: .5;
+	  }
+	  .pre{
+	  	left: 30px;
+	  }
+	  .next{
+		right:30px;
+	  }
+	  .pre:hover,.next:hover{
+	  	opacity: 1;
+	  }
+	</style>
+</head>
+<body>
+	<div class="ct">
+	  <ul class="slide">
+	  	<li><a href=""><img src="images/nvren.jpg" alt=""></a></li>
+	  	<li><a href=""><img src="images/nanmo.jpg" alt=""></a></li>
+	  	<li><a href=""><img src="images/nanren.jpg" alt=""></a></li>
+	  	<li><a href=""><img src="images/nvmo.jpg" alt=""></a></li>
+	  </ul>
+	  <ul class="control">
+	  		<li class="active"></li>
+	  		<li></li>
+	  		<li></li>
+	  		<li></li>
+	   </ul>
+	   <span class="pre"><</span>
+	   <span class="next">></span>	
+	</div>
+	<script>
+	  $(function(){
+	  	var $slide = $(".slide");
+	  	var $slideLi = $(".slide li");
+
+	  	var $control = $(".control");
+	  	var $controlLi = $(".control li");
+	  	
+	  	var $pre =  $(".pre");
+	  	var $next = $(".next");
+
+	  	var index = 0;
+	  	var timer;
+
+
+	  	$slide.css("width",$slideLi.width()*$slideLi.length*2)
+
+	  	$slideLi.each(function(){
+	  			$(this).clone().appendTo($slide)
+	  		})
+
+	  	function nextPic(){
+	  		$slide.animate({
+	  			left:-$slideLi.width()*(index+1)
+	  		},500)	  		
+	  		index++;
+	  		$controlLi.eq(index).addClass("active").siblings().removeClass("active")
+	  	  	if(index == $slideLi.length){	
+	  	  		$slide.animate({
+	  				left:-$slideLi.width()*index
+	  			},500,function(){
+	  				$slide.css("left",0)
+	  			});
+	  	  		index = 0
+	  	  		$controlLi.eq(index).addClass("active").siblings().removeClass("active")
+	  	  	}
+	  		
+	  	}
+
+	  	function prePic(){
+	  		if(index == 0){
+	  			$slide.css("left",-$slideLi.width()*$slideLi.length)
+	  			$slide.animate({
+	  				left:-$slideLi.width()*($slideLi.length-1)
+	  			},500)
+	  			$controlLi.eq(index).addClass("active").siblings().removeClass("active")
+	  			index = $slideLi.length-1
+	  		}else{
+	  			$slide.animate({
+	  				left:-$slideLi.width()*(index-1)
+		  		},500)
+		  		$controlLi.eq(index).addClass("active").siblings().removeClass("active")
+		  		index--
+	  		}
+	  		
+	  	}
+
+	  	timer = setInterval(nextPic,2000);
+
+	  	$pre.on("click",function(){
+	  		prePic();
+	  		$controlLi.eq(index).addClass("active").siblings().removeClass("active")
+	  	})
+	  	$next.on("click",function(){
+	  		nextPic();
+	  		$controlLi.eq(index).addClass("active").siblings().removeClass("active")
+	  	})
+
+	  	$control.on("click","li",function(){
+	  		$(this).addClass("active").siblings().removeClass("active")
+	  		index = $(this).index()
+	  		$slide.animate({
+	  				left:-$slideLi.width()*(index)
+		  		},500)
+	  	})
+	  	$control.on({
+	  		mouseenter:function(){
+	  			clearInterval(timer)
+	  		},
+	  		mouseleave:function(){
+	  			timer = setInterval(nextPic,2000);
+	  		}
+	  	})
+
+	  	$pre.on({
+	  		mouseenter:function(){
+	  			clearInterval(timer)
+	  		},
+	  		mouseleave:function(){
+	  			timer = setInterval(nextPic,2000);
+	  		}
+	  	})
+
+	  	$next.on({
+	  		mouseenter:function(){
+	  			clearInterval(timer)
+	  		},
+	  		mouseleave:function(){
+	  			timer = setInterval(nextPic,2000);
+	  		}
+	  	})
+	  })
+	</script>
+</body>
+</html>

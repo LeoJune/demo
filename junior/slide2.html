@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>轮播</title>
+	<script src="https://cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>
+	<style>
+	  *{
+	  	padding: 0;
+	  	margin: 0;
+	  }
+	  body{
+	  	padding: 10px 0 50px;
+	  }
+	  li{
+	  	list-style: none;
+	  }
+	  .ct{
+	  	position: relative;
+	  	width: 400px;
+	  	height: 600px;
+	  	margin-left: 500px;
+	  	overflow: hidden;
+	  }
+	  .slide{
+	  	position: absolute;
+	  }
+	  .slide li{
+	  	position: absolute;
+	  	left: 0;
+	  	top: 0;
+	  }
+	  .slide li.current{
+		z-index: 1;
+	  }
+	  .slide li img{
+	  	width: 400px;
+	  	height: 600px;
+	  	border: none;
+	  }
+	  .control{
+	  	position: absolute;
+	  	bottom: 30px;
+	  	left: 50%;
+	  	z-index: 3;
+	  	transform: translateX(-50%);
+	  	overflow: hidden;
+	  }
+	  .control li{
+		float: left;
+		margin-right: 8px;
+		background-color: #fff;
+		width: 30px;
+		height: 10px;
+		border-radius: 5px;
+		cursor: pointer;
+	  }
+	  .control li:last-child{
+	  	margin-right: 0;
+	  }
+	  .control li.active{
+	  	background-color: #666;
+	  }
+	  .pre,.next{
+		position: absolute;
+		top: 50%;
+		z-index: 2;
+		margin-top: -15px;
+		width: 30px;
+		height: 30px;
+		border-radius: 15px;
+		font-size: 20px;
+		text-align: center;
+		color: #fff;
+		cursor: pointer;
+		background-color: #333;
+		opacity: .5;
+	  }
+	  .pre{
+	  	left: 30px;
+	  }
+	  .next{
+		right:30px;
+	  }
+	  .pre:hover,.next:hover{
+	  	opacity: 1;
+	  }
+	</style>
+</head>
+<body>
+	<div class="ct">
+	  <ul class="slide">
+	  	<li class="current"><a href=""><img src="images/nvren.jpg" alt=""></a></li>
+	  	<li><a href=""><img src="images/nanmo.jpg" alt=""></a></li>
+	  	<li><a href=""><img src="images/nanren.jpg" alt=""></a></li>
+	  	<li><a href=""><img src="images/nvmo.jpg" alt=""></a></li>
+	  </ul>
+	  <ul class="control">
+	  		<li class="active"></li>
+	  		<li></li>
+	  		<li></li>
+	  		<li></li>
+	   </ul>
+	   <span class="pre"><</span>
+	   <span class="next">></span>	
+	</div>
+	<script>
+	  $(function(){
+	  	var $slide = $(".slide");
+	  	var $slideLi = $(".slide li");
+
+	  	var $control = $(".control");
+	  	var $controlLi = $(".control li");
+	  	
+	  	var $pre =  $(".pre");
+	  	var $next = $(".next");
+
+	  	var index = 0;
+	  	var timer;
+
+	  	function autoPlay(){
+	  		$slideLi.eq(index+1).fadeIn().siblings().fadeOut()
+	  		index++
+	  		$controlLi.eq(index).addClass("active").siblings().removeClass("active")
+	  		if(index == $slideLi.length-1){
+	  			index = -1;
+	  		}
+	  	}
+	  	timer = setInterval(autoPlay,2000)
+
+	  	$pre.on("click",function(){
+	  		if(index == -1){
+	  			index = $slideLi.length-1;		
+	  		}
+  			$slideLi.eq(index-1).fadeIn().siblings().fadeOut()
+  			$controlLi.eq(index-1).addClass("active").siblings().removeClass("active")
+	  		index--
+	  		console.log(index)
+	  	})
+	  	$next.on("click",function(){
+	  		if(index == $slideLi.length-1){
+	  			index = -1;		
+	  		}
+	  		$slideLi.eq(index+1).fadeIn().siblings().fadeOut()
+	  		index++
+	  		$controlLi.eq(index).addClass("active").siblings().removeClass("active")
+	  	})
+	  	$control.on("click","li",function(){
+	  		$(this).addClass("active").siblings().removeClass("active")
+	  		index = $(this).index()
+	  		$slideLi.eq(index).fadeIn().siblings().fadeOut()
+	  	})
+
+	  	$control.on({
+	  		mouseenter:function(){
+	  			clearInterval(timer)
+	  		},
+	  		mouseleave:function(){
+	  			timer = setInterval(autoPlay,2000);
+	  		}
+	  	})
+	  	$pre.on({
+	  		mouseenter:function(){
+	  			clearInterval(timer)
+	  		},
+	  		mouseleave:function(){
+	  			timer = setInterval(autoPlay,2000);
+	  		}
+	  	})
+
+	  	$next.on({
+	  		mouseenter:function(){
+	  			clearInterval(timer)
+	  		},
+	  		mouseleave:function(){
+	  			timer = setInterval(autoPlay,2000);
+	  		}
+	  	})
+	 })
+	</script>
+</body>
+</html>
