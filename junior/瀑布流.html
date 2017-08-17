@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>瀑布流</title>
+	<script src="https://cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>
+	<style>
+	  *{
+	  	padding: 0;
+	  	margin: 0;
+	  }
+	  body{
+	  	padding: 10px 20px 0;
+	  }
+	  .ct{
+	  	position: relative;
+
+	  }
+	  .item{
+	  	position: absolute;
+	  	width: 300px;
+	  	margin-top: 10px;
+	  	margin-right: 10px;
+	  	transition: .5s;
+	  }
+	  .type1{
+		height: 200px;
+		background-color: red;
+	  }
+	  .type2{
+		height: 250px;
+		background-color: green;
+	  }
+	  .type3{
+		height: 300px;
+		background-color: blue;
+	  }
+	</style>
+</head>
+<body>
+	<div class="ct">
+	  <div class="item type1"></div>
+	  <div class="item type1"></div>
+	  <div class="item type2"></div>
+	  <div class="item type3"></div>
+	  <div class="item type1"></div>
+	  <div class="item type2"></div>
+	  <div class="item type1"></div>
+	  <div class="item type3"></div>
+	  <div class="item type1"></div>
+	  <div class="item type1"></div>
+	  <div class="item type2"></div>
+	  <div class="item type3"></div>
+	  <div class="item type2"></div>
+	  <div class="item type1"></div>
+	  <div class="item type3"></div>
+	  <div class="item type1"></div>
+	  <div class="item type2"></div>
+	  <div class="item type1"></div>
+	</div>
+	<script>
+		$(function(){
+		    var WaterFall = (function () {
+		        function init() {
+		            waterFall();
+		            $(window).on('resize',function () {
+		                waterFall();
+		            });
+		        }
+		        function waterFall() {
+		        	var itemWidth = $('.item').width();
+		            var colNum = parseInt($('.ct').width()/itemWidth);
+		            var rowHeight = [];   //存储每一列的高度，起始都为0 在浏览器resize的时候，都是需要重置高度的
+		            for(var i = 0; i < colNum; i++){
+		                rowHeight[i] = 0;
+		            }
+		            $('.item').each(function () {
+		                var minH = Math.min.apply(null,rowHeight); //选出列高度中最低的高度
+		                var minIndex = rowHeight.indexOf(minH);	   //再获取最低高度是哪一列
+		                $(this).css({
+		                    left:$(this).outerWidth(true)*minIndex,  //安排到最矮的那一列
+		                    top:minH
+		                });
+		                rowHeight[minIndex]+=$(this).outerHeight(true);  //更新最矮一列的高度
+		            });
+		        }
+		        return {
+		            init:init
+		        };
+		    })();
+		    WaterFall.init();
+		})
+	</script>
+	
+</body>
+</html>
