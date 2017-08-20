@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>bucket</title>
+	<script src="https://cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+	.ct{
+		width: 1020px;
+		margin: 0 auto;
+	}
+
+
+    .img-row {
+      margin-bottom: 5px;
+    }
+
+    .img-row:after {
+      content: "";
+      display: block;
+      clear: both;
+    }
+
+    .img-box {
+      float: left;
+      margin: 0 5px;
+    }
+
+    .img-line .img-box:first-child {
+      padding-left: 0;
+    }
+    .loadmore{
+    	visibility: hidden;
+    	height: 30px;
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="ct">
+
+  </div>
+  <div class="loadmore">懒加载标记</div>
+  <script>
+  	 function Barrel($ct) {
+        this.$ct = $ct
+        this.rowList = [];
+        this.baseHeight = 200;                          
+        this.boxSize = 10;                              
+        this.clock = null;                           
+    }
+    Barrel.prototype = {
+        getImgUrls: function (nums) {
+            var width, height,
+                urls = [];
+            for (var i = 0; i < nums; i++) {
+                width = Math.floor(Math.random() * 300 + 500);
+                height = Math.floor(Math.random() * 400 + 200);
+                urls.push('https://lorempixel.com/' + width + '/' + height + '/');
+            }
+            return urls
+        },
+        loadImg: function (nums) {
+            var nums = nums || 20
+            var imgs = this.getImgUrls(nums);
+            var _this = this;
+            $.each(imgs, function (idx, url) {
+                var img = new Image();            //每一个图片都是一个对象
+                img.src = url;                  //src属性
+                img.onload = function () {
+                    var originWidth = img.width;
+                    var originHeight = img.height;
+                    var ratio = originWidth / originHeight;       //宽高比
+                    var imgInfo = {
+                        target: $(img),
+                        width: _this.baseHeight * ratio,         //我们希望的高度 乘以宽高比 就是对应的宽度
+                        height: _this.baseHeight
+                    }
+                    _this.render(imgInfo);           //每包装一张图片，渲染它
+                }
+            })
+        },
+        render: function (imgInfo) {
+            var _this = this;
+            var ctWidth = $('.ct').width();
+            var rowHeight = 0;
+            var rowWidth = 0;
+            var tempWidth;          //容纳img的margin
+
+            this.rowList.push(imgInfo);
+            for (let i = 0; i < this.rowList.length; i++) {
+                rowWidth += (this.rowList[i].width + this.boxSize);
+            }
+            if (rowWidth > ctWidth) {
+                this.rowList.pop();
+                rowWidth = rowWidth - imgInfo.width - this.boxSize;
+                tempWidth = this.rowList.length * this.boxSize;
+                rowHeight = (ctWidth - tempWidth) * _this.baseHeight / (rowWidth - tempWidth);//整体宽度小一点
+                this.layout(rowHeight);             //把一组照片放到页面上
+
+                this.rowList = [];//清空
+                this.rowList.push(imgInfo);
+            }
+        },
+        layout: function (rowHeight) {
+            var $rowCt = $('<div class="img-row"></div>');
+            $.each(this.rowList, function (idx, imgInfo) {
+                var $imgCt = $('<div class="img-box"></div>'),
+                    $img = $(imgInfo.target);
+                $img.height(rowHeight);
+                $imgCt.append($img);
+                $rowCt.append($imgCt);
+            });
+            $rowCt.hide().fadeIn(1000);                                       
+            this.$ct.append($rowCt);        
+        },
+        isVisible: function ($el) {
+            var $el = $el || $('.loadmore');
+            var scrollTop = $(window).scrollTop(),
+                winHeight = $(window).height(),
+                offsetTop = $el.offset().top;
+            if (offsetTop < scrollTop + winHeight && offsetTop > scrollTop) {
+                return true
+            } else return false;
+        },
+        init: function () {
+            var _this = this
+            this.loadImg()
+            $(window).scroll(function () {
+                if (_this.clock) {
+                    clearTimeout(_this.clock);
+                }
+                _this.clock = setTimeout(function () {
+                    if (_this.isVisible) {
+                        _this.loadImg(10)
+                    }
+                }, 500)
+            })
+        }
+    }
+
+    var p1 = new Barrel($('.ct'))
+    p1.init()
+
+
+  </script>
+
+</body>
+</html>
