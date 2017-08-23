@@ -122,8 +122,8 @@
         var color, width, height, urls = [];
         for (var i = 0; i < num; i++) {
           color = Math.random().toString(16).substring(2, 8); // toString(16) 以16进制显示数字，然后去后6位，固定用法，可以记下来
-          width = Math.floor(Math.random() * 100 + 50);
-          height = Math.floor(Math.random() * 30 + 50);
+          width = Math.floor(Math.random() * 100 + 50);  
+          height = Math.floor(Math.random() * 30 + 50);  //高度不宜设置过低，以免宽高比过大，后面一减就什么都没有了，bug有时候不是代码的问题，也有可能是数据设置的不合理，在数学方法的运算中出现问题
           urls.push("https://placehold.it/" + width + "x" + height + "/" + color + "/fff");
         }
         return urls;
