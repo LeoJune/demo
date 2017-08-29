@@ -102,7 +102,7 @@ body,div,ul,li,span,a,img,h1,h2,h3,h4,h5,h6,dl,dt,dd,p{
 	width: 22px;
 	height: 22px;
 	margin-top: 10px;
-	background: url("../images/arrow.png") no-repeat;
+	background: url("../images/zhongbohui/arrow.png") no-repeat;
 }
 .canzhan img{
 	margin: 15px 12px 10px 54px;
@@ -128,22 +128,22 @@ body,div,ul,li,span,a,img,h1,h2,h3,h4,h5,h6,dl,dt,dd,p{
 	margin: 10px 54px 10px 16px;
 }
 .baoming{
-	background: url("../images/nav-baoming.png") no-repeat;
+	background: url("../images/zhongbohui/nav-baoming.png") no-repeat;
 }
 .zhinan{
-	background: url("../images/nav-zhinan.png") no-repeat;
+	background: url("../images/zhongbohui/nav-zhinan.png") no-repeat;
 }
 .richeng{
-	background: url("../images/nav-richeng.png") no-repeat;
+	background: url("../images/zhongbohui/nav-richeng.png") no-repeat;
 }
 .zhengji{
-	background: url("../images/nav-zhengji.png") no-repeat;
+	background: url("../images/zhongbohui/nav-zhengji.png") no-repeat;
 }
 .fenbu{
-	background: url("../images/nav-fenbu.png") no-repeat;
+	background: url("../images/zhongbohui/nav-fenbu.png") no-repeat;
 }
 .zhusu{
-	background: url("../images/nav-zhusu.png") no-repeat;
+	background: url("../images/zhongbohui/nav-zhusu.png") no-repeat;
 }
 .sub-btm p{
 	float: left;
@@ -154,11 +154,11 @@ body,div,ul,li,span,a,img,h1,h2,h3,h4,h5,h6,dl,dt,dd,p{
 .sub-btm p:first-of-type{
 	margin-top: 20px;
 	margin-bottom: 10px;
-	background: url("../images/time.png") no-repeat;
+	background: url("../images/zhongbohui/time.png") no-repeat;
 }
 .sub-btm p:last-of-type{
 	margin-bottom: 45px;
-	background: url("../images/location.png") no-repeat;
+	background: url("../images/zhongbohui/location.png") no-repeat;
 }
 .stress{
 	color: #ffa4a4;
@@ -258,7 +258,7 @@ body,div,ul,li,span,a,img,h1,h2,h3,h4,h5,h6,dl,dt,dd,p{
 	position: absolute;
 	left: -50px;
 	top: 84px;
-	background: url("../images/prev.png");
+	background: url("../images/zhongbohui/prev.png");
 	cursor: pointer;
 }
 #carousel .next{
@@ -267,7 +267,7 @@ body,div,ul,li,span,a,img,h1,h2,h3,h4,h5,h6,dl,dt,dd,p{
 	position: absolute;
 	right: -50px;
 	top: 84px;
-	background: url("../images/next.png");
+	background: url("../images/zhongbohui/next.png");
 	cursor: pointer;
 }
 #content{
@@ -344,7 +344,7 @@ body,div,ul,li,span,a,img,h1,h2,h3,h4,h5,h6,dl,dt,dd,p{
 	font-size: 16px;
 	padding: 25px 14px;
 	line-height: 25px;
-	background: url("../images/zhuanti-fangtan.png") no-repeat;
+	background: url("../images/zhongbohui/zhuanti-fangtan.png") no-repeat;
 }
 
 .zhuanti ul{
@@ -373,7 +373,7 @@ body,div,ul,li,span,a,img,h1,h2,h3,h4,h5,h6,dl,dt,dd,p{
 	text-indent: 50px;
 }
 .yuanqu h2{
-	background: url("../images/turnip.png") no-repeat 0 6px;
+	background: url("../images/zhongbohui/turnip.png") no-repeat 0 6px;
 }
 .yuanqu h2 a{
 	float: right;
@@ -429,7 +429,7 @@ body,div,ul,li,span,a,img,h1,h2,h3,h4,h5,h6,dl,dt,dd,p{
 	text-indent: 50px;
 }
 .pingzhong h2{
-	background: url("../images/tomato.png") no-repeat 0 6px;
+	background: url("../images/zhongbohui/tomato.png") no-repeat 0 6px;
 }
 .pingzhong h2 a{
 	float: right;
@@ -481,7 +481,7 @@ body,div,ul,li,span,a,img,h1,h2,h3,h4,h5,h6,dl,dt,dd,p{
 	bottom: 0;
 	color: #fff;
 	font-size: 12px;
-	background: url("../images/ico.png");
+	background: url("../images/zhongbohui/ico.png");
 }
 
 .xianchang{
@@ -501,7 +501,7 @@ body,div,ul,li,span,a,img,h1,h2,h3,h4,h5,h6,dl,dt,dd,p{
 	text-indent: 50px;
 }
 .xianchang h2{
-	background: url("../images/cucumber.png") no-repeat 0 6px;
+	background: url("../images/zhongbohui/cucumber.png") no-repeat 0 6px;
 }
 .xianchang h2 a{
 	float: right;
@@ -591,7 +591,7 @@ body,div,ul,li,span,a,img,h1,h2,h3,h4,h5,h6,dl,dt,dd,p{
 	text-indent: 50px;
 }
 .zuzhi h2{
-	background: url("../images/carrot.png") no-repeat 0 6px;
+	background: url("../images/zhongbohui/carrot.png") no-repeat 0 6px;
 }
 .zuzhi dl{
 	float: left;
@@ -625,7 +625,7 @@ body,div,ul,li,span,a,img,h1,h2,h3,h4,h5,h6,dl,dt,dd,p{
 	margin-bottom: 15px;
 }
 .cooperation h2{
-	background: url("../images/egg-plant.png") no-repeat 0 6px;
+	background: url("../images/zhongbohui/egg-plant.png") no-repeat 0 6px;
 }
 .cooperation li{
 	float: left;
@@ -654,7 +654,7 @@ body,div,ul,li,span,a,img,h1,h2,h3,h4,h5,h6,dl,dt,dd,p{
 	height: 75px;
 	margin-top: 50px;
 	float: left;
-	background: url("../images/btm-logo.png") no-repeat;
+	background: url("../images/zhongbohui/btm-logo.png") no-repeat;
 }
 #footer .copyright {
 	float: left;
@@ -664,14 +664,14 @@ body,div,ul,li,span,a,img,h1,h2,h3,h4,h5,h6,dl,dt,dd,p{
 	line-height: 40px;
 }
 #footer .copyright p:last-child{
-	background: url("../images/cjsc.png") no-repeat 80px 0;
+	background: url("../images/zhongbohui/cjsc.png") no-repeat 80px 0;
 }
 #footer .erweima{
 	width:116px;
 	height: 114px;
 	float: right;
 	margin: 40px 40px 0 0;
-	background: url("../images/erweima.png") no-repeat;
+	background: url("../images/zhongbohui/erweima.png") no-repeat;
 }
 
 
