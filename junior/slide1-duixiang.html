@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>轮播</title>
+	<script src="https://cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>
+	<style>
+	  *{
+	  	padding: 0;
+	  	margin: 0;
+	  }
+	  body{
+	  	padding: 10px 0 50px;
+	  }
+	  li{
+	  	list-style: none;
+	  }
+	  .ct{
+	  	position: relative;
+	  	width: 400px;
+	  	height: 600px;
+	  	margin-left: 500px;
+	  	overflow: hidden;
+	  	margin-top: 30px;
+	  }
+	  .slide{
+	  	position: absolute;
+	  	left: 0;
+	  	width: 2000px;
+	  }
+	  .slide li{
+	  	float: left;
+	  }
+	  .slide li img{
+	  	width: 400px;
+	  	height: 600px;
+	  	border: none;
+	  }
+	  .control{
+	  	position: absolute;
+	  	bottom: 30px;
+	  	left: 50%;
+	  	transform: translateX(-50%);
+	  	overflow: hidden;
+	  }
+	  .control li{
+		float: left;
+		margin-right: 8px;
+		background-color: #fff;
+		width: 30px;
+		height: 10px;
+		border-radius: 5px;
+		cursor: pointer;
+	  }
+	  .control li:last-child{
+	  	margin-right: 0;
+	  }
+	  .control li.active{
+	  	background-color: #666;
+	  }
+	  .pre,.next{
+		position: absolute;
+		top: 50%;
+		z-index: 2;
+		margin-top: -15px;
+		width: 30px;
+		height: 30px;
+		border-radius: 15px;
+		font-size: 20px;
+		text-align: center;
+		color: #fff;
+		cursor: pointer;
+		background-color: #333;
+		opacity: .5;
+	  }
+	  .pre{
+	  	left: 30px;
+	  }
+	  .next{
+		right:30px;
+	  }
+	  .pre:hover,.next:hover{
+	  	opacity: 1;
+	  }
+	</style>
+</head>
+<body>
+	<div class="ct">
+	  <ul class="slide">
+	  	<li><a href=""><img src="images/nvren.jpg" alt=""></a></li>
+	  	<li><a href=""><img src="images/nanmo.jpg" alt=""></a></li>
+	  	<li><a href=""><img src="images/nanren.jpg" alt=""></a></li>
+	  	<li><a href=""><img src="images/nvmo.jpg" alt=""></a></li>
+	  </ul>
+	  <ul class="control">
+	  		<li class="active"></li>
+	  		<li></li>
+	  		<li></li>
+	  		<li></li>
+	   </ul>
+	   <span class="pre"><</span>
+	   <span class="next">></span>	
+	</div>
+
+	<div class="ct">
+	  <ul class="slide">
+	  	<li><a href=""><img src="images/nvren.jpg" alt=""></a></li>
+	  	<li><a href=""><img src="images/nanmo.jpg" alt=""></a></li>
+	  	<li><a href=""><img src="images/nanren.jpg" alt=""></a></li>
+	  	<li><a href=""><img src="images/nvmo.jpg" alt=""></a></li>
+	  </ul>
+	  <ul class="control">
+	  		<li class="active"></li>
+	  		<li></li>
+	  		<li></li>
+	  		<li></li>
+	   </ul>
+	   <span class="pre"><</span>
+	   <span class="next">></span>	
+	</div>
+	<script>
+	  // $(function(){
+	  // 	var $slide = $(".slide");
+	  // 	var $slideLi = $(".slide li");
+
+	  // 	var $control = $(".control");
+	  // 	var $controlLi = $(".control li");
+	  	
+	  // 	var $pre =  $(".pre");
+	  // 	var $next = $(".next");
+
+	  // 	var index = 0;
+	  // 	var timer;
+
+
+	  // 	$slide.css("width",$slideLi.width()*$slideLi.length*2)
+
+	  // 	$slideLi.each(function(){
+	  // 			$(this).clone().appendTo($slide)
+	  // 		})
+
+	  // 	function nextPic(){
+	  // 		$slide.animate({
+	  // 			left:-$slideLi.width()*(index+1)
+	  // 		},500)	  		
+	  // 		index++;
+	  // 		$controlLi.eq(index).addClass("active").siblings().removeClass("active")
+	  // 	  	if(index == $slideLi.length){	
+	  // 	  		$slide.animate({
+	  // 				left:-$slideLi.width()*index
+	  // 			},500,function(){
+	  // 				$slide.css("left",0)
+	  // 			});
+	  // 	  		index = 0
+	  // 	  		$controlLi.eq(index).addClass("active").siblings().removeClass("active")
+	  // 	  	}
+	  		
+	  // 	}
+
+	  // 	function prePic(){
+	  // 		if(index == 0){
+	  // 			$slide.css("left",-$slideLi.width()*$slideLi.length)
+	  // 			$slide.animate({
+	  // 				left:-$slideLi.width()*($slideLi.length-1)
+	  // 			},500)
+	  // 			$controlLi.eq(index).addClass("active").siblings().removeClass("active")
+	  // 			index = $slideLi.length-1
+	  // 		}else{
+	  // 			$slide.animate({
+	  // 				left:-$slideLi.width()*(index-1)
+		 //  		},500)
+		 //  		$controlLi.eq(index).addClass("active").siblings().removeClass("active")
+		 //  		index--
+	  // 		}
+	  		
+	  // 	}
+
+	  // 	timer = setInterval(nextPic,2000);
+
+	  // 	$pre.on("click",function(){
+	  // 		prePic();
+	  // 		$controlLi.eq(index).addClass("active").siblings().removeClass("active")
+	  // 	})
+	  // 	$next.on("click",function(){
+	  // 		nextPic();
+	  // 		$controlLi.eq(index).addClass("active").siblings().removeClass("active")
+	  // 	})
+
+	  // 	$control.on("click","li",function(){
+	  // 		$(this).addClass("active").siblings().removeClass("active")
+	  // 		index = $(this).index()
+	  // 		$slide.animate({
+	  // 				left:-$slideLi.width()*(index)
+		 //  		},500)
+	  // 	})
+	  // 	$control.on({
+	  // 		mouseenter:function(){
+	  // 			clearInterval(timer)
+	  // 		},
+	  // 		mouseleave:function(){
+	  // 			timer = setInterval(nextPic,2000);
+	  // 		}
+	  // 	})
+
+	  // 	$pre.on({
+	  // 		mouseenter:function(){
+	  // 			clearInterval(timer)
+	  // 		},
+	  // 		mouseleave:function(){
+	  // 			timer = setInterval(nextPic,2000);
+	  // 		}
+	  // 	})
+
+	  // 	$next.on({
+	  // 		mouseenter:function(){
+	  // 			clearInterval(timer)
+	  // 		},
+	  // 		mouseleave:function(){
+	  // 			timer = setInterval(nextPic,2000);
+	  // 		}
+	  // 	})
+	  // })
+	function Carousel($ct){
+      this.$ct=$ct
+      this.init()
+      this.bind()
+      this.bullet()
+    }
+
+    Carousel.prototype.init=function(){
+      var $imgCt =this.$imgCt=this.$ct.find('.slide')
+      var $imgs = this.$imgs=this.$ct.find('.slide>li')
+      var $preBtn =this.$preBtn=this.$ct.find('.pre')
+      var $nextBtn = this.$nextBtn=this.$ct.find('.next')
+      var $controlLi = this.$controlLi=this.$ct.find('.control li')
+
+      var pageIndex =this.pageIndex= 0
+      var isAnimate = this.isAnimate=false
+
+      var imgCount =this.imgCount= $imgs.length
+      var imgWidth = this.imgWidth=$imgs.width()
+      this.$imgCt.append($imgs.first().clone())
+      this.$imgCt.prepend($imgs.last().clone())
+      this.$imgCt.width((imgCount + 2) * imgWidth)
+      this.$imgCt.css({left: -imgWidth})
+    }
+
+    Carousel.prototype.bind=function(){
+      var _this=this
+      
+      this.$nextBtn.on('click',function(){
+        _this.playNext(1)
+      })
+	  this.$preBtn.click(function(){
+		_this.playPre(1)
+	  })
+
+    }
+
+    Carousel.prototype.playNext=function(len){
+      var _this=this
+      // console.log('playNext', len)
+			if(_this.isAnimate) return
+			_this.isAnimate = true
+      
+			_this.$imgCt.animate({
+				left: '-='+len*_this.imgWidth
+			}, function(){
+        
+				_this.pageIndex += len
+				if(_this.pageIndex === _this.imgCount) {
+					_this.pageIndex = 0
+					_this.$imgCt.css({left: -_this.imgWidth})
+				}
+				// console.log(_this.pageIndex)
+				_this.setBullet()
+				_this.isAnimate = false
+			})
+    }
+
+
+    Carousel.prototype.playPre=function(len){
+      var _this=this
+      if(_this.isAnimate) return
+			_this.isAnimate = true
+      _this.$imgCt.animate({
+				left: '+='+len*_this.imgWidth
+			}, function(){
+				_this.pageIndex -= len
+				if(_this.pageIndex < 0){
+					_this.pageIndex = _this.imgCount - 1
+					_this.$imgCt.css({left: -_this.imgCount*_this.imgWidth})
+				}
+				_this.setBullet()
+        _this.isAnimate = false
+			})
+
+
+    }
+
+    Carousel.prototype.setBullet=function(){
+      var _this=this
+      _this.$controlLi.removeClass('active')
+							.eq(_this.pageIndex)
+							.addClass('active')
+
+    }
+
+
+    Carousel.prototype.bullet=function(){
+      var _this=this
+      _this.$controlLi.click(function(){
+			var index = $(this).index()
+			// console.log(index)
+			if(index > _this.pageIndex) {
+				_this.playNext(index - _this.pageIndex)
+			}else if(index < _this.pageIndex){
+				_this.playPre(_this.pageIndex - index)
+			}
+			
+		})
+
+
+    }
+
+
+    Carousel1=(function(){
+      return{
+        init:function($ct){
+          $ct.each(function(index,node){
+            new Carousel($(node))
+          })
+        }
+      }
+    })()
+
+    Carousel1.init($('.ct'))
+	</script>
+</body>
+</html>
