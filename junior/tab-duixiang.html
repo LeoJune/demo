@@ -21,7 +21,8 @@
         }
         
         .tab {
-            width: 600px;
+            /*width: 600px;*/
+            display: inline-block;
             margin: 20px auto;
             border: 1px solid #ccc;
             padding: 20px 10px;
@@ -122,5 +123,47 @@
             <li>选项4</li>
         </ul>
     </div>
+    <script type="text/javascript">
+        var tab = (function () {
+            function Tab(ct) {
+                this.ct = ct;
+                this.init();
+                this.bind()
+            }
+            Tab.prototype.init = function () {
+                this.tabLis = this.ct.querySelectorAll('.tab-header > li');
+                this.tabPanels = this.ct.querySelectorAll('.tab-container > li');
+            };
+            Tab.prototype.bind = function () {
+                var self = this;
+                this.tabLis.forEach(function (tabLi) {
+                    tabLi.onclick = function(e){
+                        self.tabLis.forEach(function (t) {
+                        t.classList.remove('active');
+                        });
+
+                        e.target.classList.add('active');
+                        var index = [].indexOf.call(self.tabLis, e.target); //querySelectAll等这些原生js中获取多个元素的方法获取的元素集合是一个类数组，不是真正的数组，所以不能用数组的方法，想要使用数组的方法，可以用call
+                        self.tabPanels.forEach(function (t) {
+                            t.classList.remove('active');
+                        });
+                        self.tabPanels[index].classList.add('active')
+                    }
+                })
+            };
+
+            return {
+                init: function (targets) {
+                    targets.forEach(function (target) {
+                        new Tab(target)
+                    })
+                }
+            }
+        })();
+
+        tab.init(document.querySelectorAll(".tab"))
+    </script>
+
 </body>
+
 </html>
