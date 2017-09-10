@@ -25,7 +25,6 @@ body{
 .cf::after{
 	content: "";
 	display: block;
-	height: 0;
 	clear: both;
 }
 .veil{
@@ -55,6 +54,9 @@ body{
 	transition: 1s;
 	color: #af6a16;
 	box-shadow: inset 0 0 0 2px #af6a16;
+}
+.fl{
+	float: left;
 }
 
 /*header*/
@@ -89,6 +91,9 @@ nav{
 	margin-bottom: 0.5em;
 	font-size: 4em;
 	letter-spacing: 0.3em;
+}
+.inner h1 span{
+	letter-spacing: 0;
 }
 .inner p{
 	margin-bottom: 2em;
@@ -203,6 +208,7 @@ nav{
 	-ms-transition: 0.8s;
 }
 .content .communicate{
+	width: 100%;
 	padding: 5em 0 3em;
 }
 /*footer*/
