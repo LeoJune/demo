@@ -1,6 +1,7 @@
 define(['jquery'],function($){
 
 	var WaterNews = (function(){
+
 		function WaterNews($ct){
 			this.$ct = $ct
 			this.init()
@@ -9,10 +10,10 @@ define(['jquery'],function($){
 
 		WaterNews.prototype = {
 			init:function(){
-				this.count = 8
+				this.count = 3
 				this.curPage = 1
-				this.nodeWidth = this.$ct.find('.item').outWidth(true)
-				this.cols = parseInt(this.$ct.find('.news-ct').width()/this.nodeWidth)
+				this.nodeWidth = this.$ct.find('.item').outerWidth(true)
+				this.cols = parseInt(this.$ct.find('.pic-ct').width()/this.nodeWidth)
 				this.colSumHeight = []
 				for(var i=0;i<this.cols;i++){
 					this.colSumHeight[i] = 0
@@ -28,7 +29,8 @@ define(['jquery'],function($){
 			},
 
 			getData:function(){
-				$ajax({
+				var _this = this
+				$.ajax({
 					url:'http://platform.sina.com.cn/slide/album_tech',
 					type:'get',
 					dataType:'jsonp',
@@ -55,7 +57,7 @@ define(['jquery'],function($){
 				$.each(data,function(index,perData){
 					var $node = _this.getNode(perData)
 					$node.find('img').on('load',function(){
-						_this.$ct.find('.news-ct').append($node)
+						_this.$ct.find('.pic-ct').append($node)
 						_this.waterFall($node)
 					})
 				})
@@ -72,7 +74,6 @@ define(['jquery'],function($){
 			  		str += '</li>'
 
 			  		return $(str) 
-			  	} 
 			},
 
 			waterFall:function($node){
@@ -86,18 +87,18 @@ define(['jquery'],function($){
 		  		})
 
 		  		this.colSumHeight[minIndex] += $node.outerHeight(true)
-		  		this.$ct.find('.news-ct').height(Math.max.apply(null,this.colSumHeight))
+		  		this.$ct.find('.pic-ct').height(Math.max.apply(null,this.colSumHeight))
 			}
 		}
 
 		return{
 			init:function($nodes){
-				$nodes.each(function(index,node){
+				$nodes.each(function(index,$node){
 					new WaterNews($($node))
 				})
 			}
 		}
-	})
+	})()
 
 	return WaterNews
 })

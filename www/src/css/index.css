@@ -207,29 +207,29 @@ right:30px;
 #news{
 	text-align: center;
 }
-#pic-ct{
+.pic-ct{
 	position: relative;
 }
-#pic-ct .item{
+.pic-ct .item{
 	position: absolute;
 	padding: 0 0 10px 0;
 	width: 280px;
-	margin: 10px;
+	margin: 10px 50px;
 	border: 1px solid #DFDFDF;
 	background: #FFF;
 	opacity: 0;
 	transition: all .8s;
 }
-#pic-ct .item img{
+.pic-ct .item img{
     margin: 10px;
     width: 260px;
 }
-#pic-ct .item .header{
+.pic-ct .item .header{
 	height: 25px;
     margin: 0 12px;
     border-bottom: 1px solid #DBDBDB;
 }
-#pic-ct .desp{
+.pic-ct .desp{
 	font-size: 12px;
 	line-height: 1.8;
 	margin: 10px 15px 0;

@@ -15,6 +15,7 @@ define(['jquery'],function($){  //amd写法
 
 			$(window).on('scroll',function(){
 				if($(window).scrollTop() > 500){
+					console.log(123)
 					_this.target.fadeIn()
 				}else{
 					_this.target.fadeOut()
