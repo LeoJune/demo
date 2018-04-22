@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Demos</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            overflow-y: scroll;
+        }
+        ul {
+            list-style: none;
+        }
+        #menu {
+            width: 440px;
+            margin: 50px auto 0;
+            border: 1px solid #938e8c;
+            border-radius: 3px;
+        }
+        #menu li {
+            overflow: hidden;
+            border-bottom: 1px solid #938e8c;
+        }
+        #menu li:last-child {
+            border: none;
+        }
+        #menu li h4 {
+            line-height: 40px;
+            text-indent: 1em;
+            cursor: pointer;
+        }
+        #menu li div {
+            display: none;
+            background-color: #4a4237;
+        }
+        #menu div a {
+            display: block;
+            text-decoration: none;
+            color: #333;
+            line-height: 30px;
+            text-indent: 1em;
+            color: #eee;
+            border-bottom: 1px solid #cfa25c;
+        }
+        #menu div a:last-child {
+            border: none;
+        }
+        #menu div a:hover {
+            background-color: #cfa25c;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <ul id="menu">
+        <li>
+            <h4>HTML、CSS相关的范例</h4>
+            <div>
+                <a href="https://leojune.github.io/demo/freshman/myindex" target="_blank">代码规范的企业站首页</a>
+                <a href="https://leojune.github.io/demo/new/myindex.html" target="_blank">运用bootstrap写的简历</a>
+                <a href="https://leojune.github.io/demo/new/m-onlinebj.html" target="_blank">移动端页面</a>
+
+            </div>
+        </li>
+        <li>
+            <h4>原生JS、jQuery相关范例</h4>
+            <div>
+            	<a href="https://leojune.github.io/demo/senior/barrel.html" target="_blank">木桶布局</a>
+            	<a href="https://leojune.github.io/demo/junior/waterfall-news.html" target="_blank">瀑布流</a>
+            	<a href="https://leojune.github.io/demo/junior/懒加载.html" target="_blank">懒加载</a>
+            	<a href="https://leojune.github.io/demo/senior/goTop.html" target="_blank">goTop组件</a>
+            	<a href="https://leojune.github.io/demo/junior/slide1-duixiang.html" target="_blank">轮播组件</a>
+            	<a href="https://leojune.github.io/demo/junior/tab-duixiang.html" target="_blank">tab组件</a>
+               
+            </div>
+        </li>
+        <li>
+            <h4>框架、工程化相关范例</h4>
+            <div>
+                <a href="https://leojune.github.io/demo/www/require.html" target="_blank">使用require实现企业站首页模块化开发</a>
+                <a href="www.leojune.xyz" target="_blank">express+nodejs构建的在线便利贴</a>
+                <a href="https://github.com/LeoJune/vue-youzan" target="_blank">vuejs重构youzan商城</a>
+
+
+            </div>
+        </li>
+        <li>
+            <h4>个人博客</h4>
+            <div>
+                <a href="https://leojune.github.io/myblog/" target="_blank">leojune的个人博客</a>
+                
+            </div>
+        </li>
+    </ul>
+
+
+<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script>
+    $(function() {
+       $("#menu li").find("h4").click(function() {
+           $("#menu li").find("div").not($(this).next()).slideUp();
+           $(this).next().slideToggle();
+       });
+    });
+</script>
+</body>
+</html>
